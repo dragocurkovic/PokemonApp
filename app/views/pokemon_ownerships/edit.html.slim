@@ -1,0 +1,12 @@
+.text-center
+  h1.with-border= "#{@pokemon_ownership.pokemon.name.titleize}"
+
+br
+
+= render 'pokemons/pokemon_details', pokemon: @pokemon_ownership.pokemon
+
+= form_for @pokemon_ownership do |f|
+  - if @pokemon_ownership.avatar.present?
+    = image_tag(@pokemon_ownership.avatar_url, class: 'avatar-size')
+  = f.file_field :avatar
+  = f.submit 'UPLOAD', class: 'btn btn-default'

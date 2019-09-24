@@ -1,0 +1,58 @@
+.row
+  .col-sm-6.text-center
+    = image_tag(pokemon.image)
+  .col-sm-4
+    #pokemon-info
+      h3 ABOUT
+      p.description
+        = "Bulbasaur can be seen napping in bright sunligth. \
+           There is a seed on its back. By soaking up the sun's rays,\
+           the seed grows progressively larger."
+           
+      h3 INFO
+      .row 
+        .col-sm-6
+          h4.pokemon-info-attr HEIGHT
+          h5= pokemon.height
+        
+        .col-sm-6
+          h4.pokemon-info-attr GENDER
+          h5 M
+          
+      .row
+        .col-sm-6
+          h4.pokemon-info-attr WEIGHT
+          h5= pokemon.weight
+        
+        .col-sm-6
+          h4.pokemon-info-attr TYPE
+          h5= link_to pokemon.type.name.titleize, pokemon_type_path(name: pokemon.type.name)
+          
+      .row
+        .col-sm-6
+          h2= render 'pokemon_votes/votes', pokemon: pokemon
+          
+      = link_to '#', remote: true, id: 'choose-button' do
+          span.btn.btn-default.btn-lg CHOOSE POKEMON
+      br
+      
+    #choose-pokemon.hidden
+      h4 CHOOSE ABILITIES
+      p You can choose up to 4 abilities.
+      - if current_user.pokemons.where(id: pokemon).exists?
+        div.alert.alert-success Already choosen
+      - else
+        = form_tag pokemon_ownerships_path, method: :post
+          = hidden_field_tag :pokemon_id, pokemon.id
+          .row
+            - pokemon.moves.each do |move|
+              .col-xs-6
+                .checkbox
+                  label
+                    - if !move.power.nil?
+                      = check_box_tag 'move_ids[]', move.id
+                      = move.name
+
+          = submit_tag 'CHOOSE POKEMON', class: 'btn btn-default btn-lg'
+
+    h4= link_to 'Back', pokemons_path

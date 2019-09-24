@@ -1,0 +1,9 @@
+.row
+  .col-xs-9
+    h5
+      b= "#{comment.user.username}"
+  .col-xs-3.text-right
+    h5= comment.created_at.strftime('%b %d, %Y')
+  
+  .col-xs-12
+    h5= "#{comment.content}"

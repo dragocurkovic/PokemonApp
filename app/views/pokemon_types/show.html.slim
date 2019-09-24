@@ -1,0 +1,13 @@
+.text-center
+  h1.with-border Pokedex
+
+br
+
+.text-center
+  h1= "Type: #{@type.name.titleize}"
+
+br
+
+.row
+  - @type.pokemons.each do |pokemon|
+    = render 'pokemons/pokemon_info', pokemon: pokemon

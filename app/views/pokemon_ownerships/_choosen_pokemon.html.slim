@@ -1,0 +1,23 @@
+div id="pokemon-ownership-#{pokemon_ownership.id}"
+  .row
+    .col-xs-4.text-center
+      = link_to edit_pokemon_ownership_path(pokemon_ownership) do
+        = image_tag(pokemon_ownership.avatar_url || pokemon_ownership.pokemon.image, class: 'avatar-size')
+    .col-xs-8
+      h4
+        = "#{pokemon_ownership.pokemon.name.titleize}"
+        
+        .pull-right
+          = link_to pokemon_ownership_path(id: pokemon_ownership.id), method: :delete, remote: true do
+            span.glyphicon.glyphicon-trash
+      
+      p.description
+        = "Bulbasaur can be seen napping in bright sunligth. \
+           There is a seed on its back. By soaking up the sun's rays,\
+           the seed grows progressively larger."
+           
+      br
+      
+      h5
+        b Abilities  
+        = "#{pokemon_ownership.moves.map { |move| move.name.titleize }.join(', ')}"

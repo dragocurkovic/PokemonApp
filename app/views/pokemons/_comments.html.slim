@@ -1,0 +1,14 @@
+div id= "comments-#{pokemon.id}"
+  - @pokemon.comments.each do |comment|
+      = render 'pokemon_comments/comment', comment: comment
+
+br
+
+.row
+  = form_tag pokemon_comments_path(pokemon_id: @pokemon.id), remote: true, method: :post
+    .col-sm-10
+      = text_field_tag :content, nil, placeholder: 'Enter your comment', class: 'form-control form-height'
+    .col-sm-2
+      = submit_tag 'POST', class: 'btn btn-default btn-lg'
+
+br

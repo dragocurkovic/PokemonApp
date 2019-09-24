@@ -1,0 +1,46 @@
+$navbar-height: 80px;
+$navbar-margin: 10px;
+$navbar-padding: 20px;
+
+$navbar-bg-color: #314E8F;
+$navbar-color:    #FFFFFF;
+
+.navbar {
+  background-color: $navbar-bg-color;
+  height: $navbar-height;
+}
+
+.navbar-logo {
+  height: $navbar-height - 2 * $navbar-margin;
+  margin-top: $navbar-margin;
+  margin-right: 2 * $navbar-margin;
+}
+
+.navbar-default {
+  .navbar-nav {
+    li {
+      a {
+        background-color: $navbar-bg-color;
+        color: $navbar-color;
+        padding: $navbar-padding;
+        font-size: $navbar-padding;
+        border-top: 3px $navbar-bg-color solid;
+
+        &:hover {
+          border-top: 3px $navbar-color solid;
+          color: $navbar-color;
+        }
+      }
+    }
+
+    .active {
+      a, a:hover {
+        background-color: $navbar-bg-color;
+        color: $navbar-color;
+        padding: $navbar-padding;
+        font-size: 20px;
+        border-top: 3px $navbar-color solid;
+      }
+    }
+  }
+}

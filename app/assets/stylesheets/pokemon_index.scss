@@ -1,0 +1,12 @@
+$border-size: 5px;
+$border-color: #314E8F;
+$text-color: #000000;
+
+.with-border {
+  border-bottom: $border-size $border-color solid;
+  display: inline-block;
+}
+
+.pokemon-info-attr {
+  color: $border-color;
+}

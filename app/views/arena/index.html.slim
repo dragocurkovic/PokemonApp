@@ -1,0 +1,54 @@
+.text-center
+  h2.with-border Arena
+
+.row
+  .col-md-6.col-md-offset-3
+    ul.list-inline.item-list
+      li class=('active' if params[:battle_status].blank?)
+        = link_to 'All', pokemon_battles_path
+      li class=('active' if params[:battle_status] == 'upcoming')
+        = link_to 'Upcoming', pokemon_battles_path(battle_status: 'upcoming')
+      li class=('active' if params[:battle_status] == 'active')
+        = link_to 'Active', pokemon_battles_path(battle_status: 'active')
+      li class=('active' if params[:battle_status] == 'finished')
+        = link_to 'Finished', pokemon_battles_path(battle_status: 'finished')
+        
+    .text-center
+      = link_to pokemon_battles_path, remote: true, data: { toggle: 'modal', target: '#pokemon-choose-start-modal' } do
+        span.btn.btn-default CREATE MATCH
+      = render 'start_battle_modal'
+      
+br
+
+- if params[:battle_status].blank? || params[:battle_status] == 'upcoming'
+
+  #upcoming-matches
+    .row
+      .col-md-6.col-md-offset-3
+        .text-center
+          h4 UPCOMING MATCHES
+          hr
+          - @pokemon_battles.where(battle_status: PokemonBattle.battle_statuses['upcoming']).each do |battle|
+            = render 'upcoming_pokemon_battle', battle: battle
+
+- if params[:battle_status].blank? || params[:battle_status] == 'active'
+
+  #active-matches
+    .row
+      .col-md-6.col-md-offset-3
+        .text-center
+          h4 ACTIVE MATCHES
+          hr
+          - @pokemon_battles.where(battle_status: PokemonBattle.battle_statuses['active']).each do |battle|
+            = render 'active_pokemon_battle', battle: battle
+
+- if params[:battle_status].blank? || params[:battle_status] == 'finished'
+
+  #finished-matches
+    .row
+      .col-md-6.col-md-offset-3
+        .text-center
+          h4 FINISHED MATCHES
+          hr
+          - @pokemon_battles.where(battle_status: PokemonBattle.battle_statuses['finished']).each do |battle|
+            = render 'finished_pokemon_battle', battle: battle

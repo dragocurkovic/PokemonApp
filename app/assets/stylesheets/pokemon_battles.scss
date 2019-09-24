@@ -1,0 +1,41 @@
+$color-border: #CCCCCC;
+$img-opacity: 0.4;
+.item-list {
+  li {
+    padding: $item-padding;
+    font-size: $item-padding;
+
+    a {
+      color: currentColor;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .active {
+    padding-bottom: $item-padding / 2;
+    border-bottom: 5px $btn-bg-color solid;
+  }
+}
+
+hr {
+  border-color: $color-border;
+}
+
+.disable-img {
+  opacity : $img-opacity;
+  filter: alpha(opacity = $img-opacity * 100);
+}
+
+.link-decoration {
+
+  a {
+    color: currentColor;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

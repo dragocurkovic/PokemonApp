@@ -1,0 +1,8 @@
+.text-center
+  h1.with-border Pokedex
+
+br
+
+.row
+  - @pokemons.each do |pokemon|
+    = render 'pokemon_info', pokemon: pokemon

@@ -1,0 +1,16 @@
+.row
+  .col-xs-3.text-center
+    h4= "#{battle.first_pokemon.name.titleize}"
+  .col-xs-2.text-center
+    = image_tag(battle.first_pokemon.image)
+  .col-xs-2.text-center
+    h4 { text-align: left; } v
+  .col-xs-5.text-center
+    - if battle.user != current_user
+      = link_to pokemon_battles_path, remote: true, data: { toggle: 'modal', target: '#pokemon-choose-join-modal' } do
+        span.btn.btn-default JOIN MATCH
+      = render 'join_battle_modal', battle: battle
+    - else
+      = 'WAITING FOR OTHER PLAYER'
+
+hr

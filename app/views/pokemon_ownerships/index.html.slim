@@ -1,0 +1,13 @@
+.text-center
+  h3.with-border= "#{current_user.username}`s profile"
+
+br
+
+.row
+  .col-md-4
+    h4 MY POKEMONS
+
+br
+
+- current_user.pokemon_ownerships.each do |pokemon_ownership|
+  = render 'choosen_pokemon', pokemon_ownership: pokemon_ownership

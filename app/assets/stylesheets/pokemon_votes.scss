@@ -1,0 +1,38 @@
+$button-color: gray;
+$button-like-color: green;
+$button-dislike-color: red;
+
+.vote-buttons {
+  a, a:hover {
+    text-decoration: none;
+  }
+}
+
+.pokemon-link {
+  > a, > a:hover {
+    text-decoration: none;
+    color: $text-color;
+  }
+}
+
+.like-button {
+  padding-right: 5px;
+  color: gray;
+}
+
+.dislike-button {
+  -moz-transform: scale(-1, 1);
+  -webkit-transform: scale(-1, 1);
+  -o-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  transform: scale(-1, 1);
+  color: $button-color;
+}
+
+.colorize-like {
+  color: $button-like-color;
+}
+
+.colorize-dislike {
+  color: $button-dislike-color;
+}

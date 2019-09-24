@@ -1,0 +1,9 @@
+.row
+  .text-center
+    = form_tag pokemon_battle_rounds_path(pokemon_battle_id: pokemon_battle, 
+                                          pokemon_ownership_id: pokemon_battle.ownership_for_next_turn), method: :post
+      .col-xs-6
+        = select_tag 'move_id', options_from_collection_for_select(pokemon_battle.moves_for_user_turn.each, 'id', 'name'),
+          class: 'form-control'
+      .col-xs-6
+        = submit_tag 'CHOOSE MOVE', class: 'btn btn-default'

@@ -1,0 +1,15 @@
+.text-center
+  h1.with-border= "#{@pokemon.name.titleize}"
+
+br
+
+= render 'pokemon_details', pokemon: @pokemon
+    
+br
+
+.col-md-10
+  h3 COMMENTS
+
+  br
+
+  = render 'comments', pokemon: @pokemon

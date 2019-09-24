@@ -1,0 +1,2 @@
+$('#comments-<%= @pokemon.id %>').append("<%= j render 'pokemon_comments/comment', comment: @comment %>");
+$('input#content').val('');

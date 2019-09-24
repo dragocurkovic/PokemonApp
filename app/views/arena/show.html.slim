@@ -1,0 +1,47 @@
+.text-center
+  h2.with-border Fight
+
+br
+	
+.row
+  .col-md-6.col-md-offset-3
+    .row
+      .col-xs-5.text-center
+        = image_tag(@pokemon_battle.first_pokemon.image)
+        h4= "#{@pokemon_battle.first_pokemon.name.titleize}"
+        
+      .col-xs-2.text-center
+        h4 
+          br v
+        
+      .col-xs-5.text-center
+        = image_tag(@pokemon_battle.second_pokemon.image)
+        h4= "#{@pokemon_battle.second_pokemon.name.titleize}"
+    
+    .text-center
+      h3 MATCH DETAILS
+    
+    hr
+
+.row
+  .col-md-6.col-md-offset-3
+    - @pokemon_battle.pokemon_battle_rounds.each do |round|  
+      .row
+        .col-xs-6.text-center
+          h4= "#{round.move.name} (#{round.damage})" if round.user == @pokemon_battle.user
+        .col-xs-6.text-center
+          h4= "#{round.move.name} (#{round.damage})" if round.user == @pokemon_battle.opponent
+        br
+    hr
+    
+    - if @pokemon_battle.battle_status == 'finished'
+        h3.text-center= "Winner: #{@pokemon_battle.winner.pokemon.name.titleize}"
+      
+    - else
+      
+      - if @pokemon_battle.user_for_next_turn == current_user
+        = render 'choose_move_for_round', pokemon_battle: @pokemon_battle
+        
+      - else
+        .text-center
+          h4 Waiting for other player

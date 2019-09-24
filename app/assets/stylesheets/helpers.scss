@@ -1,0 +1,44 @@
+$offset: 50px;
+$btn-bg-color: #314E8F;
+$btn-color: #FFFFFF;
+$field-height: 46px;
+$img-height: 100px;
+$item-padding: 25px;
+
+.top-offset-50 {
+  margin-top: $offset;
+}
+
+.image-size {
+  max-width: 2 * $offset;
+  height: auto;
+}
+
+.avatar-size {
+  max-height: $img-height;
+  width: auto;
+}
+
+.left-offest {
+  margin-left: $offset + 30;
+}
+
+.btn-lg {
+  width: 100%;
+  background-color: $btn-bg-color;
+  color: $btn-color;
+}
+
+.btn-default {
+  background-color: $btn-bg-color;
+  color: $btn-color;
+}
+
+.label-center {
+  margin-left: $offset * 2;
+  color: $btn-bg-color;
+}
+
+.form-height {
+  height: $field-height;
+}

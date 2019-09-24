@@ -1,0 +1,21 @@
+- vote = pokemon.votes.find_by(user: current_user)
+
+div id="voting-#{pokemon.id}"
+  span.vote-buttons
+    / checks LIKE button
+    - if vote.try(:upvoted?)
+      = link_to pokemon_vote_path(pokemon), method: :delete, remote: true do
+        span.glyphicon.glyphicon-thumbs-up.like-button.colorize-like
+
+    - else 
+      = link_to pokemon_vote_path(pokemon, upvoted: true), method: :post, remote: true do
+        span.glyphicon.glyphicon-thumbs-up.like-button
+        
+    / checks DISLIKE button
+    - if vote.present? && !vote.upvoted?
+      = link_to pokemon_vote_path(pokemon), method: :delete, remote: true do
+        span.glyphicon.glyphicon-thumbs-down.reverse.dislike-button.colorize-dislike
+
+    - else 
+      = link_to pokemon_vote_path(pokemon, upvoted: false), method: :post, remote: true do
+        span.glyphicon.glyphicon-thumbs-down.reverse.dislike-button

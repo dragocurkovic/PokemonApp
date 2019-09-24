@@ -1,0 +1,20 @@
+#pokemon-choose-start-modal.modal.fade role='dialog' tabindex='-1' 
+  .modal-dialog role='document' 
+    .modal-content
+      .modal-header
+        button.close aria-label='Close' data-dismiss='modal' type='button' 
+          span aria-hidden='true'  &times;
+        h4.modal-title Choose Pokemon for Battle
+        
+      .modal-body
+        - current_user.pokemon_ownerships.each do |pokemon_ownership|
+          .row
+            .link-decoration
+              = link_to pokemon_battles_path(pokemon_ownership: pokemon_ownership), method: :post do
+              
+                h4= "#{pokemon_ownership.pokemon.name.titleize}"
+                = image_tag(pokemon_ownership.avatar_url || pokemon_ownership.pokemon.image)
+          hr
+
+      .modal-footer
+        button.btn.btn-default data-dismiss='modal' type='button' Close

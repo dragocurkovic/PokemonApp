@@ -1,0 +1,25 @@
+.row
+  h4.text-center
+    = battle.created_at.strftime('%d.%m.%Y')
+.row
+  .col-xs-3.text-center
+    h4= "#{battle.first_pokemon.name.titleize}"
+  .col-xs-2.text-center
+    - if battle.first_pokemon_ownership == battle.winner
+      = image_tag(battle.first_pokemon.image, class: 'disable-img')
+    - else
+      = image_tag(battle.first_pokemon.image)
+  .col-xs-2.text-center
+    h4 v
+  .col-xs-2.text-center
+    - if battle.second_pokemon_ownership == battle.winner
+      = image_tag(battle.second_pokemon.image, class: 'disable-img')
+    - else
+      = image_tag(battle.second_pokemon.image)
+  .col-xs-3.text-center
+    h4= "#{battle.second_pokemon.name.titleize}"
+
+.row
+  .text-center
+    = link_to 'View match', pokemon_battle_path(battle)
+hr
